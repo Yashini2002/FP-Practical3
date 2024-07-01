@@ -11,6 +11,11 @@ object Fourth{
 
    def IntSum(numbers:List[Int]):Int=
    {
-      numbers.filter(_%2==0).sum
+      numbers match {
+      case Nil => 0
+      case head :: tail =>
+        if (head % 2 == 0) head + IntSum(tail)
+        else IntSum(tail)
+    }
    }
 }
