@@ -9,6 +9,11 @@ object Second {
 
   def stringLen(strings: List[String]): List[String] = 
   {
-    strings.filter(_.length > 5)
+    strings match {
+      case Nil => Nil
+      case head :: tail =>
+        if (head.length > 5) head :: stringLen(tail)
+        else stringLen(tail)
+    }
   }
 }
